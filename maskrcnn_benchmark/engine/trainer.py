@@ -11,6 +11,7 @@ from maskrcnn_benchmark.utils.metric_logger import MetricLogger
 
 from apex import amp
 
+
 def reduce_loss_dict(loss_dict):
     """
     Reduce the loss dictionary from all processes so that process with rank
@@ -50,6 +51,7 @@ def do_train(
     logger.info("Start training")
     meters = MetricLogger(delimiter="  ")
     max_iter = len(data_loader)
+    print('[Info] 最大轮次: {}'.format(max_iter))
     start_iter = arguments["iteration"]
     model.train()
     start_training_time = time.time()
