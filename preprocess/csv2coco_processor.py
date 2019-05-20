@@ -322,10 +322,14 @@ CATEGORIES = [
 
 ]  # 来源于数据集中的label_descriptions.json文件
 
-# IMAGE_DIR = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
-# csv_file = os.path.join(ROOT_DIR, 'datasets', 'train.csv')
-IMAGE_DIR = "/data_sharing/data41_data1/zl9/fashion-2019/train"
-csv_file = "/data_sharing/data41_data1/zl9/fashion-2019/train.csv"
+# 本地
+IMAGE_DIR = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
+csv_file = os.path.join(ROOT_DIR, 'datasets', 'train.csv')
+
+
+# 线上
+# IMAGE_DIR = "/data_sharing/data41_data1/zl9/fashion-2019/train"
+# csv_file = "/data_sharing/data41_data1/zl9/fashion-2019/train.csv"
 
 
 def get_current_time_str():
@@ -466,12 +470,13 @@ def process_csv_to_coco():
             print("%d of %d is done." % (image_id, num_of_image_files))
             image_id = image_id + 1
 
-            # n_item += 1
-            # if n_item == 20:
-            #     break
+            n_item += 1
+            if n_item == 40:
+                break
 
     # 存储JSON数据
-    out_file = os.path.join(ROOT_DIR, 'datasets', 'instances_train2019.fashion.{}.json'.format(get_current_time_str()))
+    out_file_name = 'instances_train2019.fashion.{}.{}.json'.format(n_item, get_current_time_str())
+    out_file = os.path.join(ROOT_DIR, 'datasets', out_file_name)
     print('[Info] 存储文件: {}'.format(out_file))
     with open(out_file, 'w') as output_json_file:
         json.dump(coco_output, output_json_file)
