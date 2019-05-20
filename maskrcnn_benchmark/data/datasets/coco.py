@@ -77,7 +77,9 @@ class COCODataset(torchvision.datasets.coco.CocoDetection):
         classes = [obj["category_id"] for obj in anno]
         print('[Ex] classes: {}'.format(classes))
         print('[Ex] json_category_id_to_contiguous_id: {}'.format(self.json_category_id_to_contiguous_id))
-        classes = [self.json_category_id_to_contiguous_id[c] for c in classes]
+
+        # TODO: 临时修改
+        classes = [self.json_category_id_to_contiguous_id[int(c)] for c in classes]
         classes = torch.tensor(classes)
         target.add_field("labels", classes)
 
