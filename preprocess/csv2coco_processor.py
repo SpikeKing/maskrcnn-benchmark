@@ -322,7 +322,10 @@ CATEGORIES = [
 
 ]  # 来源于数据集中的label_descriptions.json文件
 
-IMAGE_DIR = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
+# IMAGE_DIR = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
+# csv_file = os.path.join(ROOT_DIR, 'datasets', 'train.csv')
+IMAGE_DIR = "/data_sharing/data41_data1/zl9/fashion-2019/train"
+csv_file = "/data_sharing/data41_data1/zl9/fashion-2019/train.csv"
 
 
 def get_current_time_str():
@@ -392,7 +395,7 @@ def process_csv_to_coco():
     """
     将
     """
-    csv_file = os.path.join(ROOT_DIR, 'datasets', 'train.csv')
+
     # df = pd.read_csv(csv_file, nrows=10)  # 读取CSV文件, 前10行
     # for index, row in df.iterrows():
     #     print(row)
