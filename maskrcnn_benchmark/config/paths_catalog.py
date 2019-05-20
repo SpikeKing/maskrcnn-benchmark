@@ -5,23 +5,28 @@ import os
 
 
 class DatasetCatalog(object):
-    DATA_DIR = "datasets"
+    # DATA_DIR = "datasets"
+    DATA_DIR = "/data_sharing/data41_data1/zl9/"
     DATASETS = {
-        "fashion_2019_train": {
-            "img_dir": "/data_sharing/data41_data1/zl9/fashion-2019/train",
-            "ann_file": "/data_sharing/data41_data1/zl9/fashion-2019/fashion_coco/instances_fashion_train2018_v2.json"
-        },
-        "fashion_2019_val": {
-            "img_dir": "/data_sharing/data41_data1/zl9/fashion-2019/val",
-            "ann_file": "/data_sharing/data41_data1/zl9/fashion-2019/fashion_coco/instances_fashion_val2018_v2.json"
-        },
+        # "fashion_2019_train": {
+        #     "img_dir": "/data_sharing/data41_data1/zl9/fashion-2019/train",
+        #     "ann_file": "/data_sharing/data41_data1/zl9/fashion-2019/fashion_coco/instances_fashion_train2018_v2.json"
+        # },
+        # "fashion_2019_val": {
+        #     "img_dir": "/data_sharing/data41_data1/zl9/fashion-2019/val",
+        #     "ann_file": "/data_sharing/data41_data1/zl9/fashion-2019/fashion_coco/instances_fashion_val2018_v2.json"
+        # },
         "coco_2017_train": {
-            "img_dir": "coco/train2017",
-            "ann_file": "coco/annotations/instances_train2017.json"
+            # "img_dir": "coco/train2017",
+            "img_dir": "fashion-2019/train",
+            # "ann_file": "coco/annotations/instances_train2017.json"
+            "ann_file": "fashion-2019/fashion_coco/instances_fashion_train2018_v2.json"
         },
         "coco_2017_val": {
-            "img_dir": "coco/val2017",
-            "ann_file": "coco/annotations/instances_val2017.json"
+            # "img_dir": "coco/val2017",
+            "img_dir": "fashion-2019/val",
+            # "ann_file": "coco/annotations/instances_val2017.json"
+            "ann_file": "fashion-2019/fashion_coco/instances_fashion_val2018_v2.json"
         },
         "coco_2014_train": {
             "img_dir": "coco/train2014",
@@ -138,17 +143,17 @@ class DatasetCatalog(object):
                 factory="PascalVOCDataset",
                 args=args,
             )
-        elif "fashion" in name:
-            # data_dir = DatasetCatalog.DATA_DIR
-            attrs = DatasetCatalog.DATASETS[name]
-            args = dict(
-                root=attrs["img_dir"],
-                ann_file=attrs["ann_file"],
-            )
-            return dict(
-                factory="COCODataset",
-                args=args,
-            )
+        # elif "fashion" in name:
+        #     # data_dir = DatasetCatalog.DATA_DIR
+        #     attrs = DatasetCatalog.DATASETS[name]
+        #     args = dict(
+        #         root=attrs["img_dir"],
+        #         ann_file=attrs["ann_file"],
+        #     )
+        #     return dict(
+        #         factory="COCODataset",
+        #         args=args,
+        #     )
         raise RuntimeError("Dataset not available: {}".format(name))
 
 

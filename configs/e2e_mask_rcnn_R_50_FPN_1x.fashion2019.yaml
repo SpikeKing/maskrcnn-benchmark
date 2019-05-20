@@ -31,8 +31,8 @@ MODEL:
     SHARE_BOX_FEATURE_EXTRACTOR: False
   MASK_ON: True
 DATASETS:
-  TRAIN: ("fashion_2019_train", "fashion_2019_val")
-  TEST: ("fashion_2019_val",)
+  TRAIN: ("coco_2017_train", "coco_2017_val")
+  TEST: ("coco_2017_val",)
 DATALOADER:
   SIZE_DIVISIBILITY: 32
 SOLVER:
