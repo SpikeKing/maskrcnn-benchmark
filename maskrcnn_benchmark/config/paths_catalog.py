@@ -138,6 +138,17 @@ class DatasetCatalog(object):
                 factory="PascalVOCDataset",
                 args=args,
             )
+        elif "fashion" in name:
+            # data_dir = DatasetCatalog.DATA_DIR
+            attrs = DatasetCatalog.DATASETS[name]
+            args = dict(
+                root=attrs["img_dir"],
+                ann_file=attrs["ann_file"],
+            )
+            return dict(
+                factory="COCODataset",
+                args=args,
+            )
         raise RuntimeError("Dataset not available: {}".format(name))
 
 
