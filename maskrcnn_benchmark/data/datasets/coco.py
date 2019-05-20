@@ -75,6 +75,8 @@ class COCODataset(torchvision.datasets.coco.CocoDetection):
         target = BoxList(boxes, img.size, mode="xywh").convert("xyxy")
 
         classes = [obj["category_id"] for obj in anno]
+        print('[Ex] {}'.format(classes))
+        print('[Ex] {}'.format(self.json_category_id_to_contiguous_id))
         classes = [self.json_category_id_to_contiguous_id[c] for c in classes]
         classes = torch.tensor(classes)
         target.add_field("labels", classes)
