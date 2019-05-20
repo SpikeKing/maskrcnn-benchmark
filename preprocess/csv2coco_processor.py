@@ -5,6 +5,7 @@ Copyright (c) 2019. All rights reserved.
 Created by C. L. Wang on 2019/5/17
 """
 import os
+import sys
 import json
 import re
 import fnmatch
@@ -16,6 +17,10 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from datetime import datetime
 from skimage.data import imread
+
+p = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if p not in sys.path:
+    sys.path.append(p)
 
 from preprocess import pycococreatortools
 from root_dir import ROOT_DIR
