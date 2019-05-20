@@ -75,8 +75,8 @@ class COCODataset(torchvision.datasets.coco.CocoDetection):
         target = BoxList(boxes, img.size, mode="xywh").convert("xyxy")
 
         classes = [obj["category_id"] for obj in anno]
-        print('[Ex] classes: {}'.format(classes))
-        print('[Ex] json_category_id_to_contiguous_id: {}'.format(self.json_category_id_to_contiguous_id))
+        # print('[Ex] classes: {}'.format(classes))
+        # print('[Ex] json_category_id_to_contiguous_id: {}'.format(self.json_category_id_to_contiguous_id))
 
         # TODO: 临时修改
         classes = [self.json_category_id_to_contiguous_id[int(c)] for c in classes]
