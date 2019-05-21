@@ -257,7 +257,7 @@ def main():
         csv_img_a += csv_img
         csv_label_a += csv_label
         csv_ep_a += csv_ep
-        
+
         count += 1
         print('[Info] count: {}'.format(count))
         # count += 1
@@ -269,7 +269,9 @@ def main():
         {'ImageId': csv_img_a, 'EncodedPixels': csv_ep_a, 'ClassId': csv_label_a})
     df = df[['ImageId', 'EncodedPixels', 'ClassId']]  # change the column index
 
-    csv_file_name = os.path.join(ROOT_DIR, 'update', 'out', 'fashion_2019.{}.csv'.format(get_current_time_str()))
+    csv_folder = os.path.join(ROOT_DIR, 'update', 'out')
+    mkdir_if_not_exist(csv_folder)
+    csv_file_name = os.path.join(csv_folder, 'fashion_2019.{}.csv'.format(get_current_time_str()))
     df.to_csv(csv_file_name, index=False, sep=str(','))
 
 
