@@ -34,5 +34,7 @@ dist/
 /preprocess/tmp/
 /preprocess/out/
 /demo/data/
+/demo/out/
 /tools/output/
 /preprocess/0_rle_to_coco/
+/update/out/

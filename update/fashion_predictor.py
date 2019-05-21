@@ -227,6 +227,9 @@ class FashionPredictor(object):
         # print(labels_list)
         # print(masks_list)
 
+        if not labels_list:
+            return [name], [0], [["1 1"]],
+
         csv_img, csv_ep, csv_label = [], [], []
         for label, mask in zip(labels_list, masks_list):
             csv_img.append(name)
@@ -252,6 +255,7 @@ def main():
         csv_img_a += csv_img
         csv_label_a += csv_label
         csv_ep_a += csv_ep
+        print('[Info] count: {}'.format(count))
         # count += 1
         # if count == 5:
         #     break
@@ -260,7 +264,7 @@ def main():
         {'ImageId': csv_img_a, 'EncodedPixels': csv_ep_a, 'ClassId': csv_label_a})
     df = df[['ImageId', 'EncodedPixels', 'ClassId']]  # change the column index
 
-    csv_file_name = os.path.join(ROOT_DIR, 'update', 'fashion_2019.{}.csv'.format(get_current_time_str()))
+    csv_file_name = os.path.join(ROOT_DIR, 'update', 'out', 'fashion_2019.{}.csv'.format(get_current_time_str()))
     df.to_csv(csv_file_name, index=False, sep=str(','))
 
 
