@@ -199,11 +199,7 @@ class FashionPredictor(object):
         plt.close()  # 避免所有图像绘制在一起
 
     @staticmethod
-    def analyze_prediction(predictions):
-        extra_fields = predictions.extra_fields
-        masks = extra_fields['mask']
-        labels = extra_fields['labels']
-
+    def analyze_prediction(masks, labels):
         masks = FashionPredictor.generate_masks_list(masks)
 
         masks_list = []
@@ -227,13 +223,18 @@ class FashionPredictor(object):
         predictions = self.coco_demo.compute_prediction(img)
         top_predictions = self.coco_demo.select_top_predictions(predictions)
 
+        extra_fields = predictions.extra_fields
+        masks = extra_fields['mask']
+        labels = extra_fields['labels']
+
+        i, _, _, _ = masks.shape
+        if i == 0:
+            return [name], [0], ['1 1']
+
         # self.show_mask(img, top_predictions)
-        labels_list, masks_list = self.analyze_prediction(top_predictions)
+        labels_list, masks_list = self.analyze_prediction(masks, labels)
         # print(labels_list)
         # print(masks_list)
-
-        if not labels_list:
-            return [name], [0], [["1 1"]],
 
         csv_img, csv_ep, csv_label = [], [], []
         for label, mask in zip(labels_list, masks_list):
