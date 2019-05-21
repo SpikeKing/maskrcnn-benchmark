@@ -79,13 +79,21 @@ class FashionPredictor(object):
     def generate_masks_list(masks):
         masks = masks.data.numpy()
         print('[Info] masks: {}'.format(masks.shape))
-        _, _, h, w = masks.shape
+
+        n_mask_list = []
+        for mask in masks:
+            mask = np.squeeze(mask, axis=0)
+            # TODO: 提交要求
+            n_mask = cv2.resize(mask, (512, 512), cv2.INTER_NEAREST)
+            n_mask_list.append(n_mask)
+
+        h, w = n_mask_list[0].shape
         img_origin = np.zeros(h * w, dtype=np.uint8)
 
         c_list = []
         c = 1
-        for mask in reversed(masks):  # 逆序，先画概率低的，再画概率高的
-            mask = np.reshape(mask, -1)
+        for mask in reversed(n_mask_list):  # 逆序，先画概率低的，再画概率高的
+            mask = np.reshape(mask, -1)  # 转成一行
             img_origin[mask == 1] = c
             c_list.append(c)
             c += 1
@@ -96,11 +104,7 @@ class FashionPredictor(object):
             img_tmp = np.zeros(h * w, dtype=np.uint8)
             img_tmp[img_origin == num] = 1
             img_tmp = np.reshape(img_tmp, (h, w))
-
-            # TODO: 提交要求
-            resized_binary_mask = cv2.resize(img_tmp, (512, 512), cv2.INTER_NEAREST)
-
-            mask_list.append(resized_binary_mask)
+            mask_list.append(img_tmp)
 
             # 测试
             # mask_ep = FashionPredictor.decode_mask(img_tmp)
