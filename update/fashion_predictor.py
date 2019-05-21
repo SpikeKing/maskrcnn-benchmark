@@ -6,6 +6,7 @@ Created by C. L. Wang on 2019/5/21
 """
 import os
 import sys
+import time
 
 import cv2
 import matplotlib.pyplot as plt
@@ -249,6 +250,7 @@ def main():
 
     csv_img_a, csv_label_a, csv_ep_a = [], [], []
     count = 0
+    s_time = time.time()
     for name, path in zip(names_list, paths_list):
         img_path = path
         csv_img, csv_label, csv_ep = fp.predict(img_path)
@@ -259,6 +261,7 @@ def main():
         # count += 1
         # if count == 5:
         #     break
+    print('[Info] 耗时: {}'.format(time.time() - s_time))
 
     df = pd.DataFrame(
         {'ImageId': csv_img_a, 'EncodedPixels': csv_ep_a, 'ClassId': csv_label_a})
