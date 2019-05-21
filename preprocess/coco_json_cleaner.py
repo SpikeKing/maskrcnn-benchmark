@@ -30,9 +30,6 @@ def clean_json():
     for anno in annotations:
         category_id = anno['category_id']
         str_list = category_id.split('_')
-        if len(str_list) > 1:
-            print(anno)
-            break
         n_category_id = str_list[0]
         anno['category_id'] = n_category_id
 

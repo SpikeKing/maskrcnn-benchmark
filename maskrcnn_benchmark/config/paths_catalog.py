@@ -8,14 +8,14 @@ class DatasetCatalog(object):
     # DATA_DIR = "datasets"
     DATA_DIR = "/data_sharing/data41_data1/zl9/"
     DATASETS = {
-        # "fashion_2019_train": {
-        #     "img_dir": "/data_sharing/data41_data1/zl9/fashion-2019/train",
-        #     "ann_file": "/data_sharing/data41_data1/zl9/fashion-2019/fashion_coco/instances_fashion_train2018_v2.json"
-        # },
-        # "fashion_2019_val": {
-        #     "img_dir": "/data_sharing/data41_data1/zl9/fashion-2019/val",
-        #     "ann_file": "/data_sharing/data41_data1/zl9/fashion-2019/fashion_coco/instances_fashion_val2018_v2.json"
-        # },
+        "fashion_2019_train": {
+            "img_dir": "fashion-2019/train",
+            "ann_file": "fashion-2019/fashion_coco/instances_train2019.fashion.clean.20190521162739.json"
+        },
+        "fashion_2019_val": {
+            "img_dir": "fashion-2019/val",
+            "ann_file": "fashion-2019/fashion_coco/instances_fashion_val2019.json"
+        },
         "coco_2017_train": {
             # "img_dir": "coco/train2017",
             "img_dir": "fashion-2019/train",
@@ -143,17 +143,17 @@ class DatasetCatalog(object):
                 factory="PascalVOCDataset",
                 args=args,
             )
-        # elif "fashion" in name:
-        #     # data_dir = DatasetCatalog.DATA_DIR
-        #     attrs = DatasetCatalog.DATASETS[name]
-        #     args = dict(
-        #         root=attrs["img_dir"],
-        #         ann_file=attrs["ann_file"],
-        #     )
-        #     return dict(
-        #         factory="COCODataset",
-        #         args=args,
-        #     )
+        elif "fashion" in name:
+            data_dir = DatasetCatalog.DATA_DIR
+            attrs = DatasetCatalog.DATASETS[name]
+            args = dict(
+                root=os.path.join(data_dir, attrs["img_dir"]),
+                ann_file=os.path.join(data_dir, attrs["ann_file"]),
+            )
+            return dict(
+                factory="COCODataset",
+                args=args,
+            )
         raise RuntimeError("Dataset not available: {}".format(name))
 
 
