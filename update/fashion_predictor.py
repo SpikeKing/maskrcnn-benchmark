@@ -257,6 +257,8 @@ def main():
         csv_img_a += csv_img
         csv_label_a += csv_label
         csv_ep_a += csv_ep
+        
+        count += 1
         print('[Info] count: {}'.format(count))
         # count += 1
         # if count == 5:
