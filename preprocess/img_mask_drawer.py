@@ -59,7 +59,8 @@ def draw_img(img_data, img_anns, img_id, n_cat, names_of_cats):
 
     cat_text_set = set()
     for ann in img_anns:
-        category_id = int(ann['category_id'].split('_')[0])  # 图像
+        # category_id = int(ann['category_id'].split('_')[0])  # 图像
+        category_id = int(ann['category_id'])  # 图像
         c = color_dict[category_id]  # 绘制颜色
 
         if 'segmentation' in ann:
@@ -73,7 +74,7 @@ def draw_img(img_data, img_anns, img_id, n_cat, names_of_cats):
                     if category_id <= 26 and (category_id not in cat_text_set):
                         tc = c - np.array([0.5, 0.5, 0.5])  # 降低颜色
                         tc = np.maximum(tc, 0.0)  # 最小值0
-                        plt.text(c_x, c_y, names_of_cats[category_id], ha='left', wrap=True, color=tc,
+                        plt.text(c_x, c_y, names_of_cats[category_id], ha='left', wrap=True, color=tc, fontsize=5,
                                  bbox=dict(facecolor='white', alpha=0.5))  # 绘制标签
                         cat_text_set.add(category_id)  # 每个标签只绘制一次
 
@@ -105,7 +106,12 @@ def draw_dataset():
     """
     绘制多张图片
     """
-    ann_file = os.path.join(ROOT_DIR, 'datasets', 'instances_train2019.fashion.40.20190520134426.json')
+    # ann_file = os.path.join(ROOT_DIR, 'datasets', 'instances_train2019.fashion.40.20190520134426.json')
+    # prefix_dir = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
+
+    ann_file = os.path.join(ROOT_DIR, 'datasets', 'instances_train2019.fashion.5.20190521143805.json')
+    prefix_dir = os.path.join(ROOT_DIR, 'datasets', 'test_mini5')
+
     coco = COCO(ann_file)
 
     cats = coco.loadCats(coco.getCatIds())
@@ -123,7 +129,7 @@ def draw_dataset():
         img_info = coco.loadImgs([img_id])[0]  # 加载图片
 
         # Img
-        prefix_dir = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
+
         img_data = io.imread(os.path.join(prefix_dir, img_info['file_name']))
 
         # 标注

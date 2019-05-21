@@ -322,9 +322,21 @@ CATEGORIES = [
 
 ]  # 来源于数据集中的label_descriptions.json文件
 
+
+def get_cate_dict():
+    id_name_dict = dict()
+    for sub_dict in CATEGORIES:
+        cid = sub_dict['id']
+        name = sub_dict['name']
+        id_name_dict[cid] = name
+    return id_name_dict
+
+
 # 本地
-IMAGE_DIR = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
-csv_file = os.path.join(ROOT_DIR, 'datasets', 'train.csv')
+# IMAGE_DIR = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
+IMAGE_DIR = os.path.join(ROOT_DIR, 'datasets', 'test_mini5')
+# csv_file = os.path.join(ROOT_DIR, 'datasets', 'train.csv')
+csv_file = os.path.join(ROOT_DIR, 'datasets', 'fashion_2019.20190521143725.csv')
 
 
 # 线上

@@ -114,6 +114,7 @@ class COCODemo(object):
 
         save_dir = cfg.OUTPUT_DIR
         checkpointer = DetectronCheckpointer(cfg, self.model, save_dir=save_dir)
+        print('[Info] 模型参数路径: {}'.format(cfg.MODEL.WEIGHT))
         _ = checkpointer.load(cfg.MODEL.WEIGHT)
 
         self.transforms = self.build_transform()
