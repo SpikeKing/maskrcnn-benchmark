@@ -11,10 +11,9 @@ import time
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import pylab
 import torch
-
-import pandas as pd
 
 from matplotlib.collections import PatchCollection
 
@@ -28,7 +27,7 @@ from preprocess.csv2coco_processor import get_cate_dict
 from preprocess.img_mask_drawer import get_center_of_polygon
 from preprocess.pycococreatortools import binary_mask_to_polygon
 from project_utils import mkdir_if_not_exist, traverse_dir_files, get_current_time_str
-from root_dir import ROOT_DIR, DATA_DIR
+from root_dir import ROOT_DIR
 
 
 class FashionPredictor(object):
