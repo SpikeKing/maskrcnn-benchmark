@@ -75,16 +75,22 @@ class FashionPredictor(object):
         return img.reshape(shape)  # Needed to align to RLE direction
 
     @staticmethod
-    def generate_masks_list(masks):
+    def generate_masks_list(masks, is_overlay=False, is_resize=True):
         masks = masks.data.numpy()
         print('[Info] masks: {}'.format(masks.shape))
 
         n_mask_list = []
         for mask in masks:
             mask = np.squeeze(mask, axis=0)
-            # TODO: 提交要求
-            n_mask = cv2.resize(mask, (512, 512), cv2.INTER_NEAREST)
+            if is_resize:
+                # TODO: 提交要求
+                n_mask = cv2.resize(mask, (512, 512), cv2.INTER_NEAREST)
+            else:
+                n_mask = mask
             n_mask_list.append(n_mask)
+
+        if not is_overlay:  # 直接返回512格式的图像
+            return n_mask_list
 
         h, w = n_mask_list[0].shape
         img_origin = np.zeros(h * w, dtype=np.uint8)
