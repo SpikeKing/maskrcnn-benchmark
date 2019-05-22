@@ -223,7 +223,7 @@ class FashionPredictor(object):
         predictions = self.coco_demo.compute_prediction(img)
         top_predictions = self.coco_demo.select_top_predictions(predictions)
 
-        extra_fields = predictions.extra_fields
+        extra_fields = top_predictions.extra_fields
         masks = extra_fields['mask']
         labels = extra_fields['labels']
 
