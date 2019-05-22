@@ -75,18 +75,17 @@ class FashionPredictor(object):
         return img.reshape(shape)  # Needed to align to RLE direction
 
     @staticmethod
-    def generate_masks_list(masks, is_overlay=False, is_resize=True):
+    def generate_masks_list(masks, is_overlay=True, is_resize=True):
         masks = masks.data.numpy()
         print('[Info] masks: {}'.format(masks.shape))
 
         n_mask_list = []
         for mask in masks:
             mask = np.squeeze(mask, axis=0)
-            if is_resize:
-                # TODO: 提交要求
-                n_mask = cv2.resize(mask, (512, 512), cv2.INTER_NEAREST)
-            else:
-                n_mask = mask
+            n_mask = mask
+            # if is_resize:
+            # TODO: 提交要求
+            # n_mask = cv2.resize(mask, (512, 512), cv2.INTER_NEAREST)
             n_mask_list.append(n_mask)
 
         if not is_overlay:  # 直接返回512格式的图像
@@ -109,7 +108,13 @@ class FashionPredictor(object):
             img_tmp = np.zeros(h * w, dtype=np.uint8)
             img_tmp[img_origin == num] = 1
             img_tmp = np.reshape(img_tmp, (h, w))
-            mask_list.append(img_tmp)
+
+            img_tmp_r = img_tmp
+            if is_resize:
+                # TODO: 提交要求
+                img_tmp_r = cv2.resize(img_tmp, (512, 512), cv2.INTER_NEAREST)
+
+            mask_list.append(img_tmp_r)
 
             # 测试
             # mask_ep = FashionPredictor.decode_mask(img_tmp)
@@ -205,6 +210,9 @@ class FashionPredictor(object):
 
     @staticmethod
     def analyze_prediction(masks, labels):
+        """
+        调整masks和labels的格式
+        """
         masks = FashionPredictor.generate_masks_list(masks)
 
         masks_list = []
@@ -251,8 +259,8 @@ class FashionPredictor(object):
 
 
 def main():
-    # test_folder = os.path.join(ROOT_DIR, 'datasets', 'test_mini5')
-    test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test'
+    test_folder = os.path.join(ROOT_DIR, 'datasets', 'test_mini5')
+    # test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test'
     paths_list, names_list = traverse_dir_files(test_folder)
     # img_path = os.path.join(DATA_DIR, 'aoa-mina.jpeg')
 

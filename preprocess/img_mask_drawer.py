@@ -127,13 +127,9 @@ def draw_dataset():
     img_ids = coco.getImgIds()
     for img_id in img_ids:
         img_info = coco.loadImgs([img_id])[0]  # 加载图片
+        img_data = io.imread(os.path.join(prefix_dir, img_info['file_name']))  # Img
 
-        # Img
-
-        img_data = io.imread(os.path.join(prefix_dir, img_info['file_name']))
-
-        # 标注
-        ann_ids = coco.getAnnIds(imgIds=img_info['id'], iscrowd=None)
+        ann_ids = coco.getAnnIds(imgIds=img_info['id'], iscrowd=None)  # 标注
         anns = coco.loadAnns(ann_ids)
 
         draw_img(img_data, anns, img_info['id'], n_cat, names_of_cats)
