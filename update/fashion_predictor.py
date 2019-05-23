@@ -263,6 +263,7 @@ def main():
     # test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test'
     paths_list, names_list = traverse_dir_files(test_folder)
     # img_path = os.path.join(DATA_DIR, 'aoa-mina.jpeg')
+    print('[Info] 图片总数: {}'.format(len(paths_list)))
 
     fp = FashionPredictor()
 
