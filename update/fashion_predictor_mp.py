@@ -51,18 +51,20 @@ def test_of_detect_img():
 def process_imgs():
     s_time = time.time()
 
-    # test_folder = '/Users/wang/workspace/maskrcnn-benchmark/datasets/test_mini5/'
+    # test_folder = '/Users/wang/workspace/maskrcnn-benchmark/datasets/test/'
     test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test/'
     image_paths = glob(test_folder + '*.*')  # 全部图片
     print('[Info] 处理图片数: {}'.format(len(image_paths)))
 
     pool = multiprocessing.Pool(NUM_WORKER, initializer=build_model)
-    res = pool.map_async(detect_img, image_paths)
+    res = pool.map_async(detect_img, image_paths, chunksize=1)
 
     while not res.ready():
         print("[Info] 待处理个数: {}".format(res._number_left))  # 获取
         time.sleep(1)  # 循环1秒打印
+
     result = res.get()
+
     pool.close()
     pool.join()
 
