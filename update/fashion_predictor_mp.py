@@ -51,8 +51,8 @@ def test_of_detect_img():
 def process_imgs():
     s_time = time.time()
 
-    test_folder = '/Users/wang/workspace/maskrcnn-benchmark/datasets/test_mini5/'
-    # test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test/'
+    # test_folder = '/Users/wang/workspace/maskrcnn-benchmark/datasets/test_mini5/'
+    test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test/'
     image_paths = glob(test_folder + '*.*')  # 全部图片
     print('[Info] 处理图片数: {}'.format(len(image_paths)))
 
