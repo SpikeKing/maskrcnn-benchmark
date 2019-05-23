@@ -6,6 +6,7 @@ Created by C. L. Wang on 2019/5/23
 """
 import os
 import sys
+import time
 import pandas as pd
 import multiprocessing
 from glob import glob
@@ -18,7 +19,7 @@ from project_utils import mkdir_if_not_exist, get_current_time_str
 from root_dir import ROOT_DIR
 from update.fashion_predictor import FashionPredictor
 
-NUM_WORKER = 3
+NUM_WORKER = 4
 MLP_GLOBAL = None
 
 
@@ -48,17 +49,26 @@ def test_of_detect_img():
 
 
 def process_imgs():
-    # test_folder = '/Users/wang/workspace/maskrcnn-benchmark/datasets/test_mini5/'
-    test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test/'
+    test_folder = '/Users/wang/workspace/maskrcnn-benchmark/datasets/test_mini5/'
+    # test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test/'
     image_paths = glob(test_folder + '*.*')  # 全部图片
     print('[Info] 处理图片数: {}'.format(len(image_paths)))
 
     pool = multiprocessing.Pool(NUM_WORKER, initializer=build_model)
-    res = pool.map(detect_img, image_paths)
+    res = pool.map_async(detect_img, image_paths)
 
-    imgs_list = [x[0] for x in res]
-    labels_list = [x[1] for x in res]
-    eps_list = [x[2] for x in res]
+    while not res.ready():
+        print("[Info] 待处理个数: {}".format(res._number_left))  # 获取
+        time.sleep(1)
+    result = res.get()
+    pool.close()
+    pool.join()
+
+    imgs_list = [x[0] for x in result]
+    labels_list = [x[1] for x in result]
+    eps_list = [x[2] for x in result]
+
+    # print(imgs_list)
 
     csv_img_a, csv_label_a, csv_ep_a = [], [], []
     for imgs, labels, eps in zip(imgs_list, labels_list, eps_list):
