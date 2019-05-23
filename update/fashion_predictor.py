@@ -259,8 +259,9 @@ class FashionPredictor(object):
 
 
 def main():
-    test_folder = os.path.join(ROOT_DIR, 'datasets', 'test_mini5')
-    # test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test'
+    # test_folder = os.path.join(ROOT_DIR, 'datasets', 'test_mini5')
+    test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test'
+    print('[Info] 数据集: {}'.format(test_folder))
     paths_list, names_list = traverse_dir_files(test_folder)
     # img_path = os.path.join(DATA_DIR, 'aoa-mina.jpeg')
     print('[Info] 图片总数: {}'.format(len(paths_list)))
