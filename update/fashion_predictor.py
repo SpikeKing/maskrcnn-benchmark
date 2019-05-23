@@ -83,9 +83,8 @@ class FashionPredictor(object):
         for mask in masks:
             mask = np.squeeze(mask, axis=0)
             n_mask = mask
-            # if is_resize:
-            # TODO: 提交要求
-            # n_mask = cv2.resize(mask, (512, 512), cv2.INTER_NEAREST)
+            if is_resize:  # TODO: 提交要求
+                n_mask = cv2.resize(mask, (512, 512), cv2.INTER_NEAREST)
             n_mask_list.append(n_mask)
 
         if not is_overlay:  # 直接返回512格式的图像
@@ -110,17 +109,16 @@ class FashionPredictor(object):
             img_tmp = np.reshape(img_tmp, (h, w))
 
             img_tmp_r = img_tmp
-            if is_resize:
-                # TODO: 提交要求
-                img_tmp_r = cv2.resize(img_tmp, (512, 512), cv2.INTER_NEAREST)
+            # if is_resize:
+            #     # TODO: 提交要求
+            #     img_tmp_r = cv2.resize(img_tmp, (512, 512), cv2.INTER_NEAREST)
 
-            mask_list.append(img_tmp_r)
+            mask_list.append(img_tmp_r.T)
 
             # 测试
             # mask_ep = FashionPredictor.decode_mask(img_tmp)
             # img_tmp2 = FashionPredictor.rle_decode(mask_ep, img_tmp.shape)
             # mask_list.append(img_tmp2)
-
         return mask_list
 
     @staticmethod
