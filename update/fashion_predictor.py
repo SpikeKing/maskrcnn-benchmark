@@ -113,7 +113,7 @@ class FashionPredictor(object):
             #     # TODO: 提交要求
             #     img_tmp_r = cv2.resize(img_tmp, (512, 512), cv2.INTER_NEAREST)
 
-            mask_list.append(img_tmp_r.T)
+            mask_list.append(img_tmp_r)
 
             # 测试
             # mask_ep = FashionPredictor.decode_mask(img_tmp)

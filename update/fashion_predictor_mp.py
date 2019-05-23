@@ -19,7 +19,7 @@ from project_utils import mkdir_if_not_exist, get_current_time_str
 from root_dir import ROOT_DIR
 from update.fashion_predictor import FashionPredictor
 
-NUM_WORKER = 4
+NUM_WORKER = 3
 MLP_GLOBAL = None
 
 
@@ -49,6 +49,8 @@ def test_of_detect_img():
 
 
 def process_imgs():
+    s_time = time.time()
+
     test_folder = '/Users/wang/workspace/maskrcnn-benchmark/datasets/test_mini5/'
     # test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test/'
     image_paths = glob(test_folder + '*.*')  # 全部图片
@@ -59,7 +61,7 @@ def process_imgs():
 
     while not res.ready():
         print("[Info] 待处理个数: {}".format(res._number_left))  # 获取
-        time.sleep(1)
+        time.sleep(1)  # 循环1秒打印
     result = res.get()
     pool.close()
     pool.join()
@@ -84,6 +86,8 @@ def process_imgs():
     mkdir_if_not_exist(csv_folder)
     csv_file_name = os.path.join(csv_folder, 'fashion_2019.{}.csv'.format(get_current_time_str()))
     df.to_csv(csv_file_name, index=False, sep=str(','))
+
+    print('[Info] 耗时: {}'.format(time.time() - s_time))
 
 
 def main():
