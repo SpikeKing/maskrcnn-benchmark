@@ -117,8 +117,8 @@ class FashionPredictor(object):
         if not is_overlay:  # 直接返回512格式的图像
             return n_mask_list
 
-        r_mask_list = FashionPredictor.remove_overlay_core(n_mask_list, is_resize=True)
-        mask_list = FashionPredictor.remove_overlay_core(r_mask_list, is_resize=False)
+        mask_list = FashionPredictor.remove_overlay_core(n_mask_list, is_resize=True)
+        # mask_list = FashionPredictor.remove_overlay_core(r_mask_list, is_resize=False)
 
         # 测试
         # mask_ep = FashionPredictor.decode_mask(img_tmp)

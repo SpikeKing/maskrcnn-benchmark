@@ -2,7 +2,8 @@ MODEL:
   META_ARCHITECTURE: "GeneralizedRCNN"
 #  WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
 #  WEIGHT: "/Users/wang/workspace/maskrcnn-benchmark/models/model_0090000.fashion.pth"
-  WEIGHT: "/data1/wcl/workspace/maskrcnn-benchmark/models-my-fashion-20190521/model_0090000.fashion.pth"
+#  WEIGHT: "/data1/wcl/workspace/maskrcnn-benchmark/models-my-fashion-20190521/model_0090000.fashion.pth"
+  WEIGHT: "/data1/wcl/workspace/maskrcnn-benchmark/models-my-fashion-20190523/model_0040000.fashion.pth"
   BACKBONE:
     CONV_BODY: "R-50-FPN"
   RESNETS:
