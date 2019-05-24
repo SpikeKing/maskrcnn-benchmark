@@ -6,7 +6,8 @@ import os
 
 class DatasetCatalog(object):
     # DATA_DIR = "datasets"
-    DATA_DIR = "/data_sharing/data41_data1/zl9/"
+    # DATA_DIR = "/data_sharing/data41_data1/zl9/" # 3
+    DATA_DIR = "/data_sharing/data411/zl9/"  # 2
     DATASETS = {
         "fashion_2019_train": {
             "img_dir": "fashion-2019/train",
