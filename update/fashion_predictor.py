@@ -393,7 +393,7 @@ class FashionPredictor(object):
         extra_fields['mask'] = masks_torch
 
         # self.show_mask_v2(img, top_predictions, name)
-     
+
         csv_img, csv_ep, csv_label = [], [], []
         for label, mask in zip(labels_list, masks_list):
             csv_img.append(name)
