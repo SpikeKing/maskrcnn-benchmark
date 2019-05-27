@@ -38,8 +38,8 @@ class FashionPredictor(object):
 
         cfg.merge_from_file(config_file)  # 设置配置文件
         cfg.merge_from_list(["MODEL.MASK_ON", True])
-        cfg.merge_from_list(["MODEL.DEVICE", "cpu"])  # 指定为CPU
-        # cfg.merge_from_list(["MODEL.DEVICE", "cuda"])  # 指定为GPU
+        # cfg.merge_from_list(["MODEL.DEVICE", "cpu"])  # 指定为CPU
+        cfg.merge_from_list(["MODEL.DEVICE", "cuda"])  # 指定为GPU
 
         self.coco_demo = COCODemo(  # 创建模型文件
             cfg,
