@@ -19,7 +19,7 @@ from project_utils import mkdir_if_not_exist, get_current_time_str
 from root_dir import ROOT_DIR
 from update.fashion_predictor import FashionPredictor
 
-NUM_WORKER = 10
+NUM_WORKER = 4
 MLP_GLOBAL = None
 
 
