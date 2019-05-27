@@ -45,187 +45,187 @@ LICENSES = [
 CATEGORIES = [
     {
         "id": 0,
-        "name": "shirt, blouse",
+        "name": "shirt, blouse",  # 衬衫
         "supercategory": "upperbody",
         "level": 2
     },
     {
         "id": 1,
-        "name": "top, t-shirt, sweatshirt",
+        "name": "top, t-shirt, sweatshirt",  # T恤衫
         "supercategory": "upperbody",
         "level": 2
     },
     {
         "id": 2,
-        "name": "sweater",
+        "name": "sweater",  # 毛衣
         "supercategory": "upperbody",
         "level": 2
     },
     {
         "id": 3,
-        "name": "cardigan",
+        "name": "cardigan",  # 羊毛衫
         "supercategory": "upperbody",
         "level": 2
     },
     {
         "id": 4,
-        "name": "jacket",
+        "name": "jacket",  # 夹克
         "supercategory": "upperbody",
         "level": 2
     },
     {
         "id": 5,
-        "name": "vest",
+        "name": "vest",  # 背心
         "supercategory": "upperbody",
         "level": 2
     },
     {
         "id": 6,
-        "name": "pants",
+        "name": "pants",  # 裤子
         "supercategory": "lowerbody",
         "level": 2
     },
     {
         "id": 7,
-        "name": "shorts",
+        "name": "shorts",  # 短裤
         "supercategory": "lowerbody",
         "level": 2
     },
     {
         "id": 8,
-        "name": "skirt",
+        "name": "skirt",  # 裙子
         "supercategory": "lowerbody",
         "level": 2
     },
     {
         "id": 9,
-        "name": "coat",
+        "name": "coat",  # 外套
         "supercategory": "wholebody",
         "level": 2
     },
     {
         "id": 10,
-        "name": "dress",
+        "name": "dress",  # 连衣裙
         "supercategory": "wholebody",
         "level": 2
     },
     {
         "id": 11,
-        "name": "jumpsuit",
+        "name": "jumpsuit",  # 连身衣裤
         "supercategory": "wholebody",
         "level": 2
     },
     {
         "id": 12,
-        "name": "cape",
+        "name": "cape",  # 披肩
         "supercategory": "wholebody",
         "level": 2
     },
     {
         "id": 13,
-        "name": "glasses",
+        "name": "glasses",  # 眼睛
         "supercategory": "head",
         "level": 2
     },
     {
         "id": 14,
-        "name": "hat",
+        "name": "hat",  # 帽子
         "supercategory": "head",
         "level": 2
     },
     {
         "id": 15,
-        "name": "headband, head covering, hair accessory",
+        "name": "headband, head covering, hair accessory",  # 发饰
         "supercategory": "head",
         "level": 2
     },
     {
         "id": 16,
-        "name": "tie",
+        "name": "tie",  # 领带
         "supercategory": "neck",
         "level": 2
     },
     {
         "id": 17,
-        "name": "glove",
+        "name": "glove",  # 手套
         "supercategory": "arms and hands",
         "level": 2
     },
     {
         "id": 18,
-        "name": "watch",
+        "name": "watch",  # 手表
         "supercategory": "arms and hands",
         "level": 2
     },
     {
         "id": 19,
-        "name": "belt",
+        "name": "belt",  # 腰带
         "supercategory": "waist",
         "level": 2
     },
     {
         "id": 20,
-        "name": "leg warmer",
+        "name": "leg warmerleg warmer",  # 护腿
         "supercategory": "legs and feet",
         "level": 2
     },
     {
         "id": 21,
-        "name": "tights, stockings",
+        "name": "tights, stockings",  # 长袜
         "supercategory": "legs and feet",
         "level": 2
     },
     {
         "id": 22,
-        "name": "sock",
+        "name": "sock",  # 袜子
         "supercategory": "legs and feet",
         "level": 2
     },
     {
         "id": 23,
-        "name": "shoe",
+        "name": "shoe",  # 鞋
         "supercategory": "legs and feet",
         "level": 2
     },
     {
         "id": 24,
-        "name": "bag, wallet",
+        "name": "bag, wallet",  # 包
         "supercategory": "others",
         "level": 2
     },
     {
         "id": 25,
-        "name": "scarf",
+        "name": "scarf",  # 围巾
         "supercategory": "others",
         "level": 2
     },
     {
         "id": 26,
-        "name": "umbrella",
+        "name": "umbrella",  # 雨伞
         "supercategory": "others",
         "level": 2
     },
     {
         "id": 27,
-        "name": "hood",
+        "name": "hood",  # 兜帽
         "supercategory": "garment parts",
         "level": 2
     },
     {
         "id": 28,
-        "name": "collar",
+        "name": "collar",  # 衣领
         "supercategory": "garment parts",
         "level": 2
     },
     {
         "id": 29,
-        "name": "lapel",
+        "name": "lapel",  # 翻领
         "supercategory": "garment parts",
         "level": 2
     },
     {
         "id": 30,
-        "name": "epaulette",
+        "name": "epaulette",  # 简章
         "supercategory": "garment parts",
         "level": 2
     },

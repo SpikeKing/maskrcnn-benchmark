@@ -71,7 +71,8 @@ def draw_img(img_data, img_anns, img_id, n_cat, names_of_cats):
                     c_x, c_y = get_center_of_polygon(poly)  # 计算多边形的中心点
 
                     # 0~26是大类别, 其余是小类别 同时 每个标签只绘制一次
-                    if category_id <= 26 and (category_id not in cat_text_set):
+                    # if category_id <= 26 and (category_id not in cat_text_set):
+                    if category_id not in cat_text_set:
                         tc = c - np.array([0.5, 0.5, 0.5])  # 降低颜色
                         tc = np.maximum(tc, 0.0)  # 最小值0
                         plt.text(c_x, c_y, names_of_cats[category_id], ha='left', wrap=True, color=tc, fontsize=5,
@@ -106,11 +107,11 @@ def draw_dataset():
     """
     绘制多张图片
     """
-    # ann_file = os.path.join(ROOT_DIR, 'datasets', 'instances_train2019.fashion.40.20190520134426.json')
-    # prefix_dir = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
+    ann_file = os.path.join(ROOT_DIR, 'datasets', 'instances_train2019.fashion.clean.20190521162739.json')
+    prefix_dir = os.path.join(ROOT_DIR, 'datasets', 'train_minimal')
 
-    ann_file = os.path.join(ROOT_DIR, 'datasets', 'instances_train2019.fashion.5.20190521143805.json')
-    prefix_dir = os.path.join(ROOT_DIR, 'datasets', 'test_mini5')
+    # ann_file = os.path.join(ROOT_DIR, 'datasets', 'instances_train2019.fashion.5.20190521143805.json')
+    # prefix_dir = os.path.join(ROOT_DIR, 'datasets', 'test_mini5')
 
     coco = COCO(ann_file)
 

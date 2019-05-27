@@ -21,9 +21,9 @@ def get_mask(img_id, df, shape=(512, 512)):
     px = df.loc[img_id]
     img_masks = px["EncodedPixels"]
     img_label = px["ClassId"]
-    if (type(img_masks) == float):
+    if type(img_masks) == float:
         return None
-    elif (type(img_masks) == str):
+    elif type(img_masks) == str:
         img_masks = [img_masks]
 
     if type(img_label) == np.int64: img_label = [img_label]
@@ -31,7 +31,7 @@ def get_mask(img_id, df, shape=(512, 512)):
     label_count = {}
     print(len(img_masks), type(img_label))
     for mask, label in zip(img_masks, img_label):
-        if (type(mask) == float):
+        if type(mask) == float:
             if len(px) == 1:
                 return None
             else:
@@ -73,8 +73,8 @@ def set_masks(mask, label_count):
 
 
 def main():
-    INPUT = os.path.join(ROOT_DIR, 'update', 'out', 'fashion_2019.20190521171744.submit.csv')
-    OUTPUT = os.path.join(ROOT_DIR, 'update', 'out', 'fashion_2019.20190521171744.submit.out.csv')
+    INPUT = os.path.join(ROOT_DIR, 'update', 'out', 'fashion_2019.20190523125113.csv')
+    OUTPUT = os.path.join(ROOT_DIR, 'update', 'out', 'fashion_2019.20190523125113.submit.csv')
 
     pred_df = pd.read_csv(INPUT).set_index('ImageId')
     pred_df.head()

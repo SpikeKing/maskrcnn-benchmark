@@ -38,3 +38,6 @@ dist/
 /tools/output/
 /preprocess/0_rle_to_coco/
 /update/out/
+/update/out-imgs/
+/update/out-imgs-a/
+/update/out-imgs-o/
