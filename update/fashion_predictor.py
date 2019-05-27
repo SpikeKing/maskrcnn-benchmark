@@ -93,9 +93,7 @@ class FashionPredictor(object):
         for num in reversed(c_list):
             img_tmp = np.zeros(h * w, dtype=np.uint8)
             img_tmp[img_origin == num] = 1
-            img_tmp = np.reshape(img_tmp, (h, w))
-
-            img_tmp_r = img_tmp
+            img_tmp_r = np.reshape(img_tmp, (h, w))
             mask_list.append(img_tmp_r)
 
         return mask_list
@@ -375,8 +373,7 @@ class FashionPredictor(object):
         masks_numpy = masks_torch.data.numpy()
         masks_list = []
         for mask in masks_numpy:
-            mask = np.squeeze(mask, axis=0)
-            n_mask = mask
+            n_mask = np.squeeze(mask, axis=0)
             masks_list.append(n_mask)
 
         labels, masks = self.sorted_label_with_mask(labels_list, masks_list)
