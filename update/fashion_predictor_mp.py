@@ -19,7 +19,7 @@ from project_utils import mkdir_if_not_exist, get_current_time_str
 from root_dir import ROOT_DIR
 from update.fashion_predictor import FashionPredictor
 
-NUM_WORKER = 4
+NUM_WORKER = 10
 MLP_GLOBAL = None
 
 
@@ -52,7 +52,8 @@ def process_imgs():
     s_time = time.time()
 
     # test_folder = '/Users/wang/workspace/maskrcnn-benchmark/datasets/test/'
-    test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test/'
+    # test_folder = '/data_sharing/data41_data1/zl9/fashion-2019/test/'
+    test_folder = '/data_sharing/data411/zl9/fashion-2019/test/'
     image_paths = glob(test_folder + '*.*')  # 全部图片
     print('[Info] 处理图片数: {}'.format(len(image_paths)))
 
