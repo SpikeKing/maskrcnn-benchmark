@@ -5,6 +5,7 @@ Copyright (c) 2019. All rights reserved.
 Created by C. L. Wang on 2019/5/8
 """
 import os
+import time
 
 import cv2
 
@@ -163,7 +164,11 @@ def main():
         confidence_threshold=0.7,
     )
 
-    predictions = coco_demo.compute_prediction(img)
+    s_time = time.time()
+    for i in range(1000):
+        predictions = coco_demo.compute_prediction(img)
+    e_time = time.time()
+    print('[Info] Time: {}'.format(e_time-s_time))
     top_predictions = coco_demo.select_top_predictions(predictions)
     show_mask(img, top_predictions, coco_demo)
 

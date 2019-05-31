@@ -93,7 +93,7 @@ CATEGORIES = [
     },
     {
         "id": 8,
-        "name": "skirt",  # 裙子
+        "name": "skirt",  # 短裙
         "supercategory": "lowerbody",
         "level": 2
     },
@@ -123,7 +123,7 @@ CATEGORIES = [
     },
     {
         "id": 13,
-        "name": "glasses",  # 眼睛
+        "name": "glasses",  # 眼镜
         "supercategory": "head",
         "level": 2
     },
@@ -177,7 +177,7 @@ CATEGORIES = [
     },
     {
         "id": 22,
-        "name": "sock",  # 袜子
+        "name": "sock",  # 短袜
         "supercategory": "legs and feet",
         "level": 2
     },
